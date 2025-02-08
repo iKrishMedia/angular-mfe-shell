@@ -1,0 +1,65 @@
+<h2>Login</h2>
+
+<!-- Adding aria-live for error message announcements -->
+<form
+  [formGroup]="loginForm"
+  (submit)="$event.preventDefault(); login()"
+  aria-labelledby="loginFormTitle"
+>
+  <h3 id="loginFormTitle" class="sr-only">Login form</h3>
+
+  <div>
+    <label for="username">Username</label>
+    <input
+      id="username"
+      name="username"
+      type="text"
+      formControlName="username"
+      placeholder="Enter your username"
+      required
+      aria-required="true"
+      aria-describedby="usernameError"
+    />
+    <!-- Error message for username input (if exists) -->
+    <p
+      id="usernameError"
+      *ngIf="
+        loginForm.get('username')?.invalid && loginForm.get('username')?.touched
+      "
+      class="error-message"
+    >
+      Username is required.
+    </p>
+  </div>
+
+  <div>
+    <label for="password">Password</label>
+    <input
+      id="password"
+      name="password"
+      type="password"
+      formControlName="password"
+      placeholder="Enter your password"
+      required
+      aria-required="true"
+      aria-describedby="passwordError"
+    />
+    <!-- Error message for password input (if exists) -->
+    <p
+      id="passwordError"
+      *ngIf="
+        loginForm.get('password')?.invalid && loginForm.get('password')?.touched
+      "
+      class="error-message"
+    >
+      Password is required.
+    </p>
+  </div>
+
+  <button type="submit" [disabled]="!loginForm.valid">Login</button>
+
+  <!-- Displaying global error message -->
+  <p *ngIf="errorMessage" class="error-message" aria-live="assertive">
+    {{ errorMessage }}
+  </p>
+</form>

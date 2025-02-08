@@ -1,0 +1,86 @@
+<nav class="container">
+  <!-- Skip to main content link -->
+  <!-- Skip to main content link -->
+  <a
+    class="skip-to-main-content-link"
+    href="#main-content"
+    title="Skip to main content"
+    >Skip to main content</a
+  >
+
+  <!-- Navigation links (Visible only if logged in) -->
+
+  <a
+    routerLink="/home"
+    *ngIf="authService.isLoggedIn()"
+    [attr.aria-label]="'Go to Home page'"
+    role="link"
+    >Home</a
+  >
+
+  <a
+    routerLink="/albums"
+    *ngIf="authService.isLoggedIn()"
+    [attr.aria-label]="'Go to Albums page'"
+    role="link"
+    >Albums</a
+  >
+  <a
+    routerLink="/posts"
+    *ngIf="authService.isLoggedIn()"
+    [attr.aria-label]="'Go to Posts page'"
+    role="link"
+    >Posts</a
+  >
+  <a
+    routerLink="/comments"
+    *ngIf="authService.isLoggedIn()"
+    [attr.aria-label]="'Go to Comments page'"
+    role="link"
+    >Comments</a
+  >
+  <a
+    routerLink="/photos"
+    *ngIf="authService.isLoggedIn()"
+    [attr.aria-label]="'Go to Photos page'"
+    role="link"
+    >Photos</a
+  >
+  <a
+    routerLink="/todos"
+    *ngIf="authService.isLoggedIn()"
+    [attr.aria-label]="'Go to Todos page'"
+    role="link"
+    >Todos</a
+  >
+  <a
+    routerLink="/users"
+    *ngIf="authService.isLoggedIn()"
+    [attr.aria-label]="'Go to Users page'"
+    role="link"
+    >Users</a
+  >
+
+  <!-- Login link (Visible only if not logged in) -->
+  <a
+    routerLink="/login"
+    *ngIf="!authService.isLoggedIn()"
+    [attr.aria-label]="'Login to your account'"
+    role="link"
+    >Login</a
+  >
+
+  <!-- Logout button (Visible only if logged in) -->
+  <button
+    *ngIf="authService.isLoggedIn()"
+    (click)="authService.logout()"
+    [attr.aria-label]="'Logout from your account'"
+  >
+    Logout
+  </button>
+</nav>
+
+<!-- Main content area for screen readers -->
+<div id="main-content" #mainContent>
+  <router-outlet></router-outlet>
+</div>

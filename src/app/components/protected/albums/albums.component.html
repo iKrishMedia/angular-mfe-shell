@@ -1,0 +1,6 @@
+<p>albums</p>
+<ul *ngIf="albums$ | async as albums">
+  <li *ngFor="let album of albums">
+    <strong>{{ album.title }}</strong>
+  </li>
+</ul>

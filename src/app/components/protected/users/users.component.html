@@ -1,0 +1,7 @@
+<h2>Users</h2>
+<ul *ngIf="users$ | async as users">
+  <li *ngFor="let user of users">
+    <strong>{{ user.username }}</strong>
+    <input type="checkbox" disabled="true" aria-label="email" />
+  </li>
+</ul>

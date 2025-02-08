@@ -1,0 +1,36 @@
+.controls {
+  display: flex;
+  justify-content: space-between;
+}
+button,a {
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+.container {
+  display: flex;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+}
+
+.container a:focus, 
+.container button:focus {
+  outline: 2px solid #007bff; /* Example of visible focus outline */
+}
+
+
+.skip-to-main-content-link{
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1000;
+  display: none;
+}

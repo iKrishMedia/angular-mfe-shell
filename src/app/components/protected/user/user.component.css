@@ -1,0 +1,8 @@
+.user-container{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: silver;
+    border-radius: 6px;
+}

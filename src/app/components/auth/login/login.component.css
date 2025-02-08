@@ -1,0 +1,18 @@
+.error-message {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 4px;
+  }
+  
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(100%);
+    overflow: hidden;
+  }
+  
