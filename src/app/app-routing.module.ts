@@ -5,6 +5,8 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { HomeComponent } from './components/protected/home/home.component';
 import { canActivateGuard, canMatchGuard } from './guards/auth.guard';
 import { Role } from './enums/role.enum';
+import { loadRemoteModule } from '@angular-architects/module-federation';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -27,9 +29,11 @@ const routes: Routes = [
   {
     path: 'comments',
     loadChildren: () =>
-      import('./components/protected/comments/comments.module').then(
-        (m) => m.CommentsModule,
-      ),
+      loadRemoteModule({
+        type: 'module',
+        remoteEntry: 'http://localhost:4201/remoteEntry.js',
+        exposedModule: './CommentsModule',
+      }).then((m) => m.CommentsModule),
     canMatch: [canMatchGuard],
   },
   {
@@ -64,6 +68,7 @@ const routes: Routes = [
       ),
     canMatch: [canMatchGuard],
   },
+  { path: 'unauthorized', component: UnauthorizedComponent },
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 

@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { HomeComponent } from './components/protected/home/home.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     HomeComponent,
     LoginComponent,
     NavbarComponent,
+    UnauthorizedComponent,
   ],
   imports: [
     BrowserModule,

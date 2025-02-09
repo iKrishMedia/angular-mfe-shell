@@ -1,16 +1,5 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnInit,
-  Renderer2,
-  ViewChild,
-} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { UserService } from './services/user.service';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
-import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -18,31 +7,16 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  @ViewChild('mainContent') mainContentRef!: ElementRef;
-
-  title = 'Angular15';
-  users$!: Observable<any[]>;
-  currentPage = 1;
-  hasMorePages$ = this.userService.hasMorePages$;
-  constructor(
-    private http: HttpClient,
-    private userService: UserService,
-    public authService: AuthService,
-    private renderer: Renderer2,
-  ) {}
+  title = 'Angular MFE Shell';
+  constructor(public authService: AuthService) {}
   ngOnInit(): void {
-    this.loadUsers();
+    this.authService.isAuthenticated$.subscribe(() => {
+      this.updateMfeWindowToken();
+    });
   }
-
-  private loadUsers() {
-    this.users$ = this.userService.fetchUsers(this.currentPage);
-  }
-  nextPage() {
-    this.currentPage++;
-    this.loadUsers();
-  }
-  previousPage() {
-    if (this.currentPage > 1) this.currentPage--;
-    this.loadUsers();
+  private updateMfeWindowToken() {
+    const token = this.authService.getToken();
+    console.log('token set to window:' + token);
+    (window as any)['mfeWindowToken'] = token;
   }
 }
