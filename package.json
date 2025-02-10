@@ -1,5 +1,5 @@
 {
-  "name": "angular15",
+  "name": "angular-mfe-shell",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
