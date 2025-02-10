@@ -10,7 +10,7 @@ sharedMappings.register(
 
 module.exports = {
   output: {
-    uniqueName: "angular15",
+    uniqueName: "angular-mfe-shell",
     publicPath: "auto"
   },
   optimization: {
@@ -29,7 +29,7 @@ module.exports = {
         library: { type: "module" },
 
         // For remotes (please adjust)
-        // name: "angular15",
+        // name: "angular-mfe-shell",
         // filename: "remoteEntry.js",
         // exposes: {
         //     './Component': './/src/app/app.component.ts',
